@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Question 'n' Answer</title>
+        <link rel="stylesheet" href="stylesheet.css">
+        <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+        <script type="text/javascript">
+            var page_nr = 0;
+
+            function load_page() {
+                var offset = page_nr * 10;
+                $.ajax('/api/questions?limit=10&offset=' + offset, {
+                    success: function(data) {
+                        $('#questions').html('');
+                        $.each(data, function(i, item) {
+                            var $tr = $('<tr>').append(
+                                $('<td>').text(item.title),
+                                $('<td>').text(item.description)
+                            );
+                            $tr.appendTo('#questions');
+                        });
+                    }
+                });
+            }
+
+            $(load_page);
+
+            function zurueck() {
+                if (page_nr > 0) {
+                    --page_nr;
+                    load_page();
+                }
+            }   
+            function weiter() {
+                ++page_nr;
+                load_page();
+            }
+        </script>
+            
+
+    </head>
+    <body>
+            <h1>Question 'n' Answer</h1>
+            <div class="top-buttonbar buttonbar">
+                    <a href="question.html"><img src="plus.png" title="Frage hinzufügen" width="100px"></a>
+            </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th><th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="questions">
+                        <!-- filled by JS -->
+                    </tbody>
+                </table>
+                <div class="bottom-buttonbar buttonbar">
+                <button onclick="zurueck()" type="button" id="prev">Zurück</button>
+                <button onclick="weiter()" type="button" id="next">Weiter</button>
+                    </div>
+        
+    </body>
+</html>

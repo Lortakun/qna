@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="stylesheet.css">
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+      var ti, des;
+      
+      function save_question(elem) 
+      {
+        ti = ti || document.getElementById('ti');
+        des = des || document.getElementById('des');
+
+        $.ajax('/api/questions', {
+          method: 'POST',
+          contentType: 'application/json; charset=UTF-8',
+          data: JSON.stringify({
+            title: ti.value,
+            description: des.value,
+          }),
+          success: function() {
+            document.location = "/";
+          },
+        });
+      }
+  </script>
+  </head>
+  <body>
+    <form name="qna">
+     
+        <h1>Frage hinzufügen:</h1>
+        <table>
+          <tr>
+            <td><h2>Titel</h2></td>
+            <td><input type="text" placeholder="Titel" id="ti" ></td>
+          </tr>
+          <tr>
+            <td><h2>Beschreibung</h2></td>
+            <td><input type="text" placeholder="Beschreibung" id="des" ></td>
+          </tr>
+          <tr>
+            <td><input type="button" value="OK" onclick="save_question(this)" name="ok"></td>
+            <td><a href="index.html"><input type="button" value="Cancel" name="cancel"></a></td>
+          </tr>
+        </table>
+      
+    </form>
+  </body>
+</html>

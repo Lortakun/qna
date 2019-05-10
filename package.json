@@ -1,0 +1,20 @@
+{
+  "name": "qna",
+  "version": "1.0.0",
+  "description": "Question 'n' Answer website",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lortakun/qna.git"
+  },
+  "author": "Georg Bachmann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lortakun/qna/issues"
+  },
+  "homepage": "https://github.com/Lortakun/qna#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "4.16.4"
+  }
+}

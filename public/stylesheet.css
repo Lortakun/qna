@@ -1,0 +1,31 @@
+body {
+  background-color: rgb(207, 207, 207);
+}
+h1 {
+  font: Arial; 
+  text-align: center; 
+  color: blue;
+}
+p {
+  color: cornflowerblue;
+}
+table {
+  border: solid;
+  padding: 1px;
+  width: 100%;
+  border-spacing: 10px;
+  text-align: center;
+
+}
+
+.buttonbar {
+  width: 100%;
+}
+
+.top-buttonbar {
+  text-align: right;
+}
+
+.bottom-buttonbar {
+  text-align: center;
+}
